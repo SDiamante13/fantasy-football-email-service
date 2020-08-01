@@ -37,3 +37,9 @@ Replace `${API_KEY}` with your Send Grid API key.
 Replace email properties with your desired sender and receiver.
 
 To make your own cronjob I recommend using [Cron Generator](https://crontab-generator.org/)
+
+Sample Email:
+
+![Fantasy Football Email](sample-email.png)
+
+
