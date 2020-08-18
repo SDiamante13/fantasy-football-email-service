@@ -27,7 +27,7 @@ In your terminal of choice, open up your crobtab editor using the following comm
 Enter your cron command, for example:
 
 ```
-0 8 * * 2 cd ${PROJECT_DIR}/build/libs && java -DSENDGRID_API_KEY=${API_KEY} -DSENDER_EMAIL=${VERIFIED_SENDGRID_EMAIL} -DRECIPIENT_EMAIL=${EMAIL_TO} -jar fantasy-football-email-service-1.0-SNAPSHOT.jar  >/dev/null 2>&1
+0 8 * * 2 cd ${PROJECT_DIR}/build/libs && java -DSENDGRID_API_KEY=${API_KEY} -DSENDER_EMAIL=${VERIFIED_SENDGRID_EMAIL} -DRECIPIENT_EMAIL=${EMAIL_TO} -DPROXY_HOST_NAME=${PROXY_HOST_NAME} -DPROXY_PORT=${PROXY_PORT} -jar fantasy-football-email-service-1.0-SNAPSHOT.jar  >/dev/null 2>&1
 ```
 
 Replace `${PROJECT_DIR}` with the location of this repo.
@@ -35,6 +35,8 @@ Replace `${PROJECT_DIR}` with the location of this repo.
 Replace `${API_KEY}` with your Send Grid API key.
 
 Replace email properties with your desired sender and receiver.
+
+If using a proxy provide the proxy host and port.
 
 To make your own cronjob I recommend using [Cron Generator](https://crontab-generator.org/)
 
