@@ -11,15 +11,15 @@ import tech.pathtoprogramming.fantasyfootball.model.Position;
 public class WebRetrievalService {
 
     public static final String RANKINGS_URL = "https://fantasypros.com/nfl/rankings/consensus-cheatsheets.php";
-    public static final String WAIVERS_URL = "https://fantasypros.com/nfl/rankings/waiver-wire-overall.php";
+    public static final String WAIVERS_URL = "https://www.fantasypros.com/nfl/rankings/waiver-wire-overall.php";
     public static final String BEST_PLAYERS_URL = "https://www.fantasypros.com/nfl/reports/leaders/";
 
     public Element getDraftRankings() {
-        return getElementFromWebPage(RANKINGS_URL, "table#rank-data");
+        return getElementFromWebPage(RANKINGS_URL, "table#ranking-table");
     }
 
     public Element getWaiverRankings() {
-        return getElementFromWebPage(WAIVERS_URL, "table#rank-data");
+        return getElementFromWebPage(WAIVERS_URL, "table#ranking-table");
     }
 
     public Element getBestPlayersByPosition(Position position) {

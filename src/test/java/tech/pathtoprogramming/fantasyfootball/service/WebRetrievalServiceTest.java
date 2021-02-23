@@ -1,6 +1,7 @@
 package tech.pathtoprogramming.fantasyfootball.service;
 
 import org.jsoup.nodes.Element;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -20,7 +21,7 @@ class WebRetrievalServiceTest {
     void getDraftRankings_returnsTheTopDraftPicksByTieredRankings_andDisplaysInTheBrowser() throws Exception {
         Element element = webRetrievalService.getDraftRankings();
 
-        assertNotNull(element);
+        assertThatElementWasFound(element);
 
         displayResultInBrowser(element, "rankings-table.html");
     }
@@ -29,7 +30,7 @@ class WebRetrievalServiceTest {
     void getWaiverRankings_returnsBestWaiverWirePickups_andDisplaysInTheBrowser() throws Exception {
         Element element = webRetrievalService.getWaiverRankings();
 
-        assertNotNull(element);
+        assertThatElementWasFound(element);
 
         displayResultInBrowser(element, "waiver-wire-rankings.html");
     }
@@ -38,7 +39,7 @@ class WebRetrievalServiceTest {
     void getBestPlayerByPosition_returnsBestPlayers_whenInputIsNull() throws Exception {
         Element element = webRetrievalService.getBestPlayersByPosition(null);
 
-        assertNotNull(element);
+        assertThatElementWasFound(element);
 
         displayResultInBrowser(element, "best-players.html");
     }
@@ -47,7 +48,7 @@ class WebRetrievalServiceTest {
     void getBestPlayerByPosition_returnsBestQuarterbacks_whenInputIsQB() throws Exception {
         Element element = webRetrievalService.getBestPlayersByPosition(QB);
 
-        assertNotNull(element);
+        assertThatElementWasFound(element);
 
         displayResultInBrowser(element, "best-quarterbacks.html");
     }
@@ -56,7 +57,7 @@ class WebRetrievalServiceTest {
     void getBestPlayerByPosition_returnsBestRunningBacks_whenInputIsRB() throws Exception {
         Element element = webRetrievalService.getBestPlayersByPosition(RB);
 
-        assertNotNull(element);
+        assertThatElementWasFound(element);
 
         displayResultInBrowser(element, "best-running-backs.html");
     }
@@ -77,6 +78,11 @@ class WebRetrievalServiceTest {
         assertNotNull(element);
 
         displayResultInBrowser(element, "best-tight-ends.html");
+    }
+
+    private void assertThatElementWasFound(Element element) {
+        assertNotNull(element);
+        Assertions.assertNotEquals("<h1>Error something went wrong</h1>", element.toString());
     }
 
     private void displayResultInBrowser(Element element, String fileName) throws IOException {
